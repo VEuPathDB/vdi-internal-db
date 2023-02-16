@@ -1,0 +1,3 @@
+= VDI Internal Database
+
+Internal PostgreSQL database for tracking VDI datasets.
