@@ -18,6 +18,7 @@ CREATE TABLE IF NOT EXISTS vdi.datasets (
 CREATE TABLE IF NOT EXISTS vdi.sync_control (
   dataset_id CHAR(32)
     NOT NULL
+    UNIQUE
     REFERENCES vdi.datasets (dataset_id)
 , shares_update_time TIMESTAMP WITH TIME ZONE
     NOT NULL
@@ -27,17 +28,15 @@ CREATE TABLE IF NOT EXISTS vdi.sync_control (
     NOT NULL
 );
 
-CREATE TYPE share_grant_status AS ENUM ('grant', 'revoke');
-CREATE TYPE share_receipt_status AS ENUM ('accept', 'reject');
-
 CREATE TABLE IF NOT EXISTS vdi.owner_share (
   dataset_id CHAR(32)
     NOT NULL
     REFERENCES vdi.datasets (dataset_id)
 , shared_with BIGINT
     NOT NULL
-, status share_grant_status
+, status VARCHAR
     NOT NULL
+, CONSTRAINT owner_share_uq UNIQUE (dataset_id, shared_with)
 );
 
 CREATE TABLE IF NOT EXISTS vdi.recipient_share (
@@ -46,6 +45,34 @@ CREATE TABLE IF NOT EXISTS vdi.recipient_share (
     REFERENCES vdi.datasets (dataset_id)
 , shared_with BIGINT
     NOT NULL
-, status share_receipt_status
+, status VARCHAR
     NOT NULL
+, CONSTRAINT recipient_share_uq UNIQUE (dataset_id, shared_with)
+);
+
+CREATE TABLE IF NOT EXISTS vdi.import_control (
+  dataset_id CHAR(32)
+    NOT NULL
+    UNIQUE
+    REFERENCES vdi.datasets (dataset_id)
+, status VARCHAR
+    NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS vdi.dataset_files (
+  dataset_id CHAR(32)
+    NOT NULL
+    REFERENCES vdi.datasets (dataset_id)
+, file_name VARCHAR
+    NOT NULL
+, CONSTRAINT dataset_files_file_to_dataset_uq UNIQUE (dataset_id, file_name)
+);
+
+CREATE TABLE IF NOT EXISTS vdi.dataset_projects (
+  dataset_id CHAR(32)
+    NOT NULL
+    REFERENCES vdi.datasets (dataset_id)
+, project_id VARCHAR
+    NOT NULL
+, CONSTRAINT dataset_projects_uq UNIQUE (dataset_id, project_id)
 );
