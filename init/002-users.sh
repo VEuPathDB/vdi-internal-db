@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+psql -v ON_ERROR_STOP=1 --username "$POSTGRES_USER" <<-EOF
+  GRANT ALL PRIVILEGES ON SCHEMA vdi TO $POSTGRES_USER;
+EOF
