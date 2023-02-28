@@ -63,26 +63,26 @@ CREATE TABLE IF NOT EXISTS vdi.sync_control (
     NOT NULL
 );
 
-CREATE TABLE IF NOT EXISTS vdi.owner_share (
+CREATE TABLE IF NOT EXISTS vdi.dataset_share_offers (
   dataset_id CHAR(32)
     NOT NULL
     REFERENCES vdi.datasets (dataset_id)
-, shared_with VARCHAR
+, recipient_id VARCHAR
     NOT NULL
 , status VARCHAR
     NOT NULL
-, CONSTRAINT owner_share_uq UNIQUE (dataset_id, shared_with)
+, CONSTRAINT owner_share_uq UNIQUE (dataset_id, recipient_id)
 );
 
-CREATE TABLE IF NOT EXISTS vdi.recipient_share (
+CREATE TABLE IF NOT EXISTS vdi.dataset_share_receipts (
   dataset_id CHAR(32)
     NOT NULL
     REFERENCES vdi.datasets (dataset_id)
-, shared_with VARCHAR
+, recipient_id VARCHAR
     NOT NULL
 , status VARCHAR
     NOT NULL
-, CONSTRAINT recipient_share_uq UNIQUE (dataset_id, shared_with)
+, CONSTRAINT recipient_share_uq UNIQUE (dataset_id, recipient_id)
 );
 
 CREATE TABLE IF NOT EXISTS vdi.import_control (
