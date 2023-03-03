@@ -1,3 +1,55 @@
 = VDI Internal Database
 
 Internal PostgreSQL database for tracking VDI datasets.
+
+Based on: https://hub.docker.com/_/postgres
+
+== Structure
+
+[%header, cols="3m,7"]
+|===
+| Table | Purpose
+
+| vdi.datasets
+| Root VDI dataset tracking table.
+
+| vdi.dataset_files
+| Listing of data files belonging to a target dataset.
+
+| vdi.dataset_projects
+| Listing of projects that a dataset belongs to.
+
+| vdi.dataset_metadata
+| User provided metadata about a target dataset.
+
+| vdi.sync_control
+| Timestamps for determining whether a dataset has been updated since it was
+  last synchronized.
+
+| vdi.dataset_share_offers
+| Share offers from a dataset owner to a target recipient.
+
+| vdi.dataset_share_receipts
+| Share receipts from a share offer recipient.
+
+| vdi.import_control
+| Dataset import status tracking.
+|===
+
+== Configuration
+
+=== Environment Variables
+
+[source, shell]
+----
+# Required
+POSTGRES_PASSWORD=
+
+# Optional
+POSTGRES_USER=
+POSTGRES_DB=
+POSTGRES_INITDB_ARGS=
+POSTGRES_INITDB_WALDIR=
+POSTGRES_HOST_AUTH_METHOD=
+PGDATA=
+----
