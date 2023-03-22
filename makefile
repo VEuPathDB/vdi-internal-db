@@ -1,10 +1,10 @@
 default:
 	@echo "what are you doing?"
 
-docker-build:
+build:
 	@docker build -t veupathdb/vdi-internal-db:latest .
 
-docker-run:
+run:
 	@docker run -it --rm \
 		-p 5432:5432 \
 		-e POSTGRES_USER=postgres \
