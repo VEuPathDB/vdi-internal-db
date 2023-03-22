@@ -93,3 +93,11 @@ CREATE TABLE IF NOT EXISTS vdi.import_control (
 , status VARCHAR
     NOT NULL
 );
+
+CREATE TABLE IF NOT EXISTS vdi.import_messages (
+  dataset_id CHAR(32)
+    NOT NULL
+    REFERENCES vdi.datasets (dataset_id)
+, message VARCHAR
+    NOT NULL
+);

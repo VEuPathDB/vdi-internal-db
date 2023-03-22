@@ -34,6 +34,9 @@ Based on: https://hub.docker.com/_/postgres
 
 | vdi.import_control
 | Dataset import status tracking.
+
+| vdi.import_messages
+| Messages generated while attempting to import a dataset.
 |===
 
 == Configuration
