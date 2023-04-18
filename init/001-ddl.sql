@@ -96,6 +96,7 @@ CREATE TABLE IF NOT EXISTS vdi.import_control (
 
 CREATE TABLE IF NOT EXISTS vdi.import_messages (
   dataset_id CHAR(32)
+    UNIQUE
     NOT NULL
     REFERENCES vdi.datasets (dataset_id)
 , message VARCHAR
