@@ -44,6 +44,8 @@ CREATE TABLE IF NOT EXISTS vdi.dataset_metadata (
     NOT NULL
     UNIQUE
     REFERENCES vdi.datasets (dataset_id)
+, visibility VARCHAR
+    NOT NULL
 , name VARCHAR
     NOT NULL
 , summary VARCHAR
