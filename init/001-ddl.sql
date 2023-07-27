@@ -13,6 +13,8 @@ CREATE TABLE IF NOT EXISTS vdi.datasets (
 , is_deleted BOOLEAN
     NOT NULL
     DEFAULT FALSE
+, origin VARCHAR
+    NOT NULL
 , created TIMESTAMP WITH TIME ZONE
     NOT NULL
     DEFAULT now()
