@@ -52,6 +52,7 @@ CREATE TABLE IF NOT EXISTS vdi.dataset_metadata (
     NOT NULL
 , summary VARCHAR
 , description VARCHAR
+, source_url VARCHAR
 );
 
 CREATE TABLE IF NOT EXISTS vdi.sync_control (
