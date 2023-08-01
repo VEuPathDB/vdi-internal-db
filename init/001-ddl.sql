@@ -1,5 +1,6 @@
 CREATE SCHEMA IF NOT EXISTS vdi;
 
+
 CREATE TABLE IF NOT EXISTS vdi.datasets (
   dataset_id CHAR(32)
     PRIMARY KEY
@@ -18,16 +19,6 @@ CREATE TABLE IF NOT EXISTS vdi.datasets (
 , created TIMESTAMP WITH TIME ZONE
     NOT NULL
     DEFAULT now()
-);
-
-
-CREATE TABLE IF NOT EXISTS vdi.dataset_files (
-  dataset_id CHAR(32)
-    NOT NULL
-    REFERENCES vdi.datasets (dataset_id)
-, file_name VARCHAR
-    NOT NULL
-, CONSTRAINT dataset_files_file_to_dataset_uq UNIQUE (dataset_id, file_name)
 );
 
 
@@ -55,6 +46,7 @@ CREATE TABLE IF NOT EXISTS vdi.dataset_metadata (
 , source_url VARCHAR
 );
 
+
 CREATE TABLE IF NOT EXISTS vdi.sync_control (
   dataset_id CHAR(32)
     NOT NULL
@@ -68,6 +60,7 @@ CREATE TABLE IF NOT EXISTS vdi.sync_control (
     NOT NULL
 );
 
+
 CREATE TABLE IF NOT EXISTS vdi.dataset_share_offers (
   dataset_id CHAR(32)
     NOT NULL
@@ -78,6 +71,7 @@ CREATE TABLE IF NOT EXISTS vdi.dataset_share_offers (
     NOT NULL
 , CONSTRAINT owner_share_uq UNIQUE (dataset_id, recipient_id)
 );
+
 
 CREATE TABLE IF NOT EXISTS vdi.dataset_share_receipts (
   dataset_id CHAR(32)
@@ -90,6 +84,7 @@ CREATE TABLE IF NOT EXISTS vdi.dataset_share_receipts (
 , CONSTRAINT recipient_share_uq UNIQUE (dataset_id, recipient_id)
 );
 
+
 CREATE TABLE IF NOT EXISTS vdi.import_control (
   dataset_id CHAR(32)
     NOT NULL
@@ -98,6 +93,7 @@ CREATE TABLE IF NOT EXISTS vdi.import_control (
 , status VARCHAR
     NOT NULL
 );
+
 
 CREATE TABLE IF NOT EXISTS vdi.import_messages (
   dataset_id CHAR(32)
