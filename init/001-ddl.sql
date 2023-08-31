@@ -10,7 +10,6 @@ CREATE TABLE IF NOT EXISTS vdi.datasets (
 , type_version VARCHAR
     NOT NULL
 , owner_id VARCHAR
-    NOT NULL
 , is_deleted BOOLEAN
     NOT NULL
     DEFAULT FALSE
