@@ -2,7 +2,7 @@ CREATE SCHEMA IF NOT EXISTS vdi;
 
 
 CREATE TABLE IF NOT EXISTS vdi.datasets (
-  dataset_id CHAR(32)
+  dataset_id CHAR(22)
     PRIMARY KEY
     NOT NULL
 , type_name VARCHAR
@@ -22,7 +22,7 @@ CREATE TABLE IF NOT EXISTS vdi.datasets (
 
 
 CREATE TABLE IF NOT EXISTS vdi.dataset_projects (
-  dataset_id CHAR(32)
+  dataset_id CHAR(22)
     NOT NULL
     REFERENCES vdi.datasets (dataset_id)
 , project_id VARCHAR
@@ -32,7 +32,7 @@ CREATE TABLE IF NOT EXISTS vdi.dataset_projects (
 
 
 CREATE TABLE IF NOT EXISTS vdi.dataset_metadata (
-  dataset_id CHAR(32)
+  dataset_id CHAR(22)
     NOT NULL
     UNIQUE
     REFERENCES vdi.datasets (dataset_id)
@@ -47,7 +47,7 @@ CREATE TABLE IF NOT EXISTS vdi.dataset_metadata (
 
 
 CREATE TABLE IF NOT EXISTS vdi.sync_control (
-  dataset_id CHAR(32)
+  dataset_id CHAR(22)
     NOT NULL
     UNIQUE
     REFERENCES vdi.datasets (dataset_id)
@@ -61,7 +61,7 @@ CREATE TABLE IF NOT EXISTS vdi.sync_control (
 
 
 CREATE TABLE IF NOT EXISTS vdi.dataset_share_offers (
-  dataset_id CHAR(32)
+  dataset_id CHAR(22)
     NOT NULL
     REFERENCES vdi.datasets (dataset_id)
 , recipient_id VARCHAR
@@ -73,7 +73,7 @@ CREATE TABLE IF NOT EXISTS vdi.dataset_share_offers (
 
 
 CREATE TABLE IF NOT EXISTS vdi.dataset_share_receipts (
-  dataset_id CHAR(32)
+  dataset_id CHAR(22)
     NOT NULL
     REFERENCES vdi.datasets (dataset_id)
 , recipient_id VARCHAR
@@ -85,7 +85,7 @@ CREATE TABLE IF NOT EXISTS vdi.dataset_share_receipts (
 
 
 CREATE TABLE IF NOT EXISTS vdi.import_control (
-  dataset_id CHAR(32)
+  dataset_id CHAR(22)
     NOT NULL
     UNIQUE
     REFERENCES vdi.datasets (dataset_id)
@@ -95,7 +95,7 @@ CREATE TABLE IF NOT EXISTS vdi.import_control (
 
 
 CREATE TABLE IF NOT EXISTS vdi.import_messages (
-  dataset_id CHAR(32)
+  dataset_id CHAR(22)
     UNIQUE
     NOT NULL
     REFERENCES vdi.datasets (dataset_id)
