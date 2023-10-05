@@ -102,3 +102,15 @@ CREATE TABLE IF NOT EXISTS vdi.import_messages (
 , message VARCHAR
     NOT NULL
 );
+
+
+CREATE TABLE IF NOT EXISTS vdi.dataset_files (
+  dataset_id VARCHAR(32)
+    NOT NULL
+    REFERENCES vdi.datasets (dataset_id)
+, file_name VARCHAR
+    NOT NULL
+, file_size BIGINT
+    NOT NULL
+, CONSTRAINT file_uq UNIQUE (dataset_id, file_name)
+);
