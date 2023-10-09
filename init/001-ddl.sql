@@ -25,6 +25,7 @@ CREATE TABLE IF NOT EXISTS vdi.dataset_projects (
   dataset_id VARCHAR(32)
     NOT NULL
     REFERENCES vdi.datasets (dataset_id)
+    PRIMARY KEY
 , project_id VARCHAR
     NOT NULL
 , CONSTRAINT dataset_projects_uq UNIQUE (dataset_id, project_id)
@@ -64,6 +65,7 @@ CREATE TABLE IF NOT EXISTS vdi.dataset_share_offers (
   dataset_id VARCHAR(32)
     NOT NULL
     REFERENCES vdi.datasets (dataset_id)
+    PRIMARY KEY
 , recipient_id VARCHAR
     NOT NULL
 , status VARCHAR
@@ -76,6 +78,7 @@ CREATE TABLE IF NOT EXISTS vdi.dataset_share_receipts (
   dataset_id VARCHAR(32)
     NOT NULL
     REFERENCES vdi.datasets (dataset_id)
+    PRIMARY KEY
 , recipient_id VARCHAR
     NOT NULL
 , status VARCHAR
@@ -104,13 +107,27 @@ CREATE TABLE IF NOT EXISTS vdi.import_messages (
 );
 
 
-CREATE TABLE IF NOT EXISTS vdi.dataset_files (
+CREATE TABLE IF NOT EXISTS vdi.upload_files (
   dataset_id VARCHAR(32)
     NOT NULL
     REFERENCES vdi.datasets (dataset_id)
+    PRIMARY KEY
 , file_name VARCHAR
     NOT NULL
 , file_size BIGINT
     NOT NULL
-, CONSTRAINT file_uq UNIQUE (dataset_id, file_name)
+, CONSTRAINT upload_file_uq UNIQUE (dataset_id, file_name)
+);
+
+
+CREATE TABLE IF NOT EXISTS vdi.install_files (
+  dataset_id VARCHAR(32)
+    NOT NULL
+    REFERENCES vdi.datasets (dataset_id)
+    PRIMARY KEY
+, file_name VARCHAR
+    NOT NULL
+, file_size BIGINT
+    NOT NULL
+, CONSTRAINT install_file_uq UNIQUE (dataset_id, file_name)
 );
