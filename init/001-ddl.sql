@@ -111,12 +111,11 @@ CREATE TABLE IF NOT EXISTS vdi.upload_files (
   dataset_id VARCHAR(32)
     NOT NULL
     REFERENCES vdi.datasets (dataset_id)
-    PRIMARY KEY
 , file_name VARCHAR
     NOT NULL
 , file_size BIGINT
     NOT NULL
-, CONSTRAINT upload_file_uq UNIQUE (dataset_id, file_name)
+, PRIMARY KEY (dataset_id, file_name)
 );
 
 
