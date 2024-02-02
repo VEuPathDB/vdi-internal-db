@@ -44,6 +44,8 @@ CREATE TABLE IF NOT EXISTS vdi.dataset_metadata (
 , summary VARCHAR
 , description VARCHAR
 , source_url VARCHAR
+, created TIMESTAMP WITH TIME ZONE
+    NOT NULL
 );
 
 
