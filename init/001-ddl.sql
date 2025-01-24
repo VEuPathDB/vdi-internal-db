@@ -5,8 +5,6 @@ CREATE TABLE IF NOT EXISTS vdi.datasets (
   dataset_id VARCHAR(32)
     PRIMARY KEY
     NOT NULL
-, user_stable_id VARCHAR
-    UNIQUE
 , type_name VARCHAR
     NOT NULL
 , type_version VARCHAR
@@ -45,6 +43,9 @@ CREATE TABLE IF NOT EXISTS vdi.dataset_metadata (
     NOT NULL
 , name VARCHAR
     NOT NULL
+, short_name VARCHAR
+, short_attribution VARCHAR
+, category VARCHAR
 , summary VARCHAR
 , description VARCHAR
 , source_url VARCHAR
