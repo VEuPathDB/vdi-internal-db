@@ -45,6 +45,9 @@ CREATE TABLE IF NOT EXISTS vdi.dataset_metadata (
     NOT NULL
 , name VARCHAR
     NOT NULL
+, short_name VARCHAR
+, short_attribution VARCHAR
+, category VARCHAR
 , summary VARCHAR
 , description VARCHAR
 , source_url VARCHAR
