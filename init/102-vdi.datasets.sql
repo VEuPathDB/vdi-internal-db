@@ -4,11 +4,13 @@
  * This table contains the critical, immutable information about a dataset.
  */
 CREATE TABLE IF NOT EXISTS vdi.datasets (
-  dataset_id VARCHAR(16)
+  dataset_id VARCHAR
     PRIMARY KEY
     NOT NULL
+
 , type_name VARCHAR
     NOT NULL
+
 , type_version VARCHAR
     NOT NULL
 

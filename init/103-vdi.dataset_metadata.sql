@@ -9,17 +9,23 @@
  * the HTTP REST API.
  */
 CREATE TABLE IF NOT EXISTS vdi.dataset_metadata (
-  dataset_id VARCHAR(16)
-    NOT NULL
-    UNIQUE
+  dataset_id VARCHAR
+    PRIMARY KEY
     REFERENCES vdi.datasets (dataset_id)
+    ON DELETE CASCADE
+
 , visibility VARCHAR
     NOT NULL
+
 , name VARCHAR
     NOT NULL
-, short_name VARCHAR
-, short_attribution VARCHAR
+
 , summary VARCHAR
+    NOT NULL
+
+, project_name VARCHAR
+
+, program_name VARCHAR
+
 , description VARCHAR
-, source_url VARCHAR
 );
